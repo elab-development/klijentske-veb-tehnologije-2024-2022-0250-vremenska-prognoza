@@ -3,6 +3,7 @@ import { WEATHER_API_URL,WEATHER_API_KEY } from './api';
 import './App.css';
 import Search from './components/Search/search';
 import TrenutnoVreme from './components/trenutno-vreme/trenutno-vreme';
+import Prognoza from './components/prognoza/prognoza.js';
 
 function App() {
 
@@ -27,7 +28,6 @@ function App() {
       })
       .catch((err)=>console.log(err));
   }
-
   console.log(trenutnoVreme);
   console.log(prognoza);
 
@@ -35,6 +35,7 @@ function App() {
     <div className="container">
       <Search onSearchChange={handleOnSearchChange}/>
       {trenutnoVreme && <TrenutnoVreme data={trenutnoVreme}/>}
+      {prognoza && <Prognoza data={prognoza}/>}
     </div>
   );
 }
