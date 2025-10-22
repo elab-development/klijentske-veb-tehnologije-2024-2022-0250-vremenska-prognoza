@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { WEATHER_API_URL,WEATHER_API_KEY } from './api';
 import './App.css';
 import Search from './components/Search/search';
@@ -41,6 +41,7 @@ function App() {
           lat={trenutnoVreme.coord.lat}
           lon={trenutnoVreme.coord.lon}
           city={trenutnoVreme.city}
+          temp={trenutnoVreme.main.temp}
           />
         )}
       {prognoza && <Prognoza data={prognoza}/>}

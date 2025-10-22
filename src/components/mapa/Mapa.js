@@ -1,4 +1,4 @@
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from 'leaflet';
 import { Icon } from "leaflet";
@@ -13,7 +13,13 @@ const defaultIcon= new L.Icon({
     popupAnchor:[0,-41]
 })
 
-function Mapa({lat,lon, city}){
+function PomeriMapu({lat,lon}){
+    const map=useMap();
+    map.setView([lat,lon], 10);
+    return null;
+}
+
+function Mapa({lat,lon,city,temp}){
     return(
         <div className="mapa-container" style={{height: '400px', width:'100%', marginTop:'20px'}}>
             <MapContainer center={[lat,lon]} zoom={10} scrollWheelZoom={true} style={{height:'100%',width:'100%'}}>
@@ -23,9 +29,11 @@ function Mapa({lat,lon, city}){
                 ></TileLayer>
                 <Marker position={[lat,lon]} icon={defaultIcon}>
                     <Popup>
-                        <strong>{city}</strong> <br/> Lokacija grada
+                        <strong>{city}</strong> <br/>
+                        Trenutna temperatura: 🌡️ <strong>{Math.round(temp)}°C</strong>
                     </Popup>
                 </Marker>
+                <PomeriMapu lat={lat} lon={lon}/>
             </MapContainer>
 
         </div>
