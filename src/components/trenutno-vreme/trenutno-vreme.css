@@ -1,0 +1,61 @@
+.vreme{
+    width: 300px;
+    border-radius: 6px;
+    box-shadow: 10px -2px 20px 2px rgb(0 0 0 /30%);
+    color: #fff;
+    background-color: #333;
+    margin: 20px auto 0 auto;
+    padding: 0 20px 20px 20px;
+}
+.top,
+.donji{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.grad{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1;
+    margin: 0;
+    letter-spacing: 1px;
+}
+.vreme-opis{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1;
+    margin: 0;
+}
+.vreme-icon{
+    width: 100px;
+}
+
+.temperatura{
+    font-weight: 600;
+    font-size: 70px;
+    width: auto;
+    letter-spacing: -5px;
+    margin: 10px 0;
+}
+
+.detalji{
+    width: 100%;
+    padding-left: 20px;
+}
+.parametri-red{
+    display: flex;
+    justify-content: space-between;
+}
+.parametri{
+    text-align: left;
+    font-weight: 400;
+    font-size: 12px;
+}
+.parametri-vrednost{
+    text-align: right;
+    font-weight: 600;
+    font-size: 12px;
+}
+.parametri.top{
+    border-bottom: 1px solid white;
+}
