@@ -11,7 +11,7 @@ const TrenutnoVreme= () => {
                 <img alt="vreme" className="vreme-icon" src="icons/01d.png"/>
             </div>
             <div className="donji">
-                <p className="temperatura">18 °C</p>
+                <p className="temperatura">18°C</p>
                 <div className="detalji">
                    <div className="parametri-red">
                         <span className="parametri">Detalji</span>
