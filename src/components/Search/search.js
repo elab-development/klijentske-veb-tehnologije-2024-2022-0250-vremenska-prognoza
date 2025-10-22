@@ -18,8 +18,7 @@ const Search = ({ onSearchChange }) => {
         console.error("Greška pri učitavanju poslednje pretrage:", err);
       }
     }
-    // ⚠️ nema onSearchChange u zavisnostima!
-    // time sprečavamo beskonačno izvršavanje
+    // ⚠️ onSearchChange izostavljen iz zavisnosti da sprečimo beskonačnu petlju
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -55,14 +54,47 @@ const Search = ({ onSearchChange }) => {
     localStorage.setItem("lastSearch", JSON.stringify(searchData));
   };
 
+  // 🔹 Brisanje poslednje pretrage
+  const handleClearSearch = () => {
+    localStorage.removeItem("lastSearch");
+    setSearch(null);
+    onSearchChange(null); // obavesti App da nema aktivne pretrage
+  };
+
   return (
-    <AsyncPaginate
-      placeholder="Pretražite grad..."
-      debounceTimeout={600}
-      value={search}
-      onChange={handleOnChange}
-      loadOptions={loadOptions}
-    />
+    <div
+      style={{
+        display: "flex",
+        gap: "10px",
+        alignItems: "center",
+        marginBottom: "20px",
+      }}
+    >
+      <div style={{ flexGrow: 1 }}>
+        <AsyncPaginate
+          placeholder="Pretražite grad..."
+          debounceTimeout={600}
+          value={search}
+          onChange={handleOnChange}
+          loadOptions={loadOptions}
+        />
+      </div>
+
+      {/* 🔹 Dugme za brisanje */}
+      <button
+        onClick={handleClearSearch}
+        style={{
+          padding: "10px 14px",
+          backgroundColor: "#e74c3c",
+          color: "white",
+          border: "none",
+          borderRadius: "6px",
+          cursor: "pointer",
+        }}
+      >
+        🗑 Obriši
+      </button>
+    </div>
   );
 };
 
