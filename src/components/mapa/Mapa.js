@@ -1,9 +1,17 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from 'leaflet';
+import { Icon } from "leaflet";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import markerShadowPng from "leaflet/dist/images/marker-shadow.png";
 
+const defaultIcon= new L.Icon({
+    iconUrl: markerIconPng,
+    shadowUrl: markerShadowPng,
+    iconSize:[25,41],
+    iconAnchor:[12,41],
+    popupAnchor:[0,-41]
+})
 
 function Mapa({lat,lon, city}){
     return(
@@ -13,7 +21,7 @@ function Mapa({lat,lon, city}){
                     url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
                     attribution='&copy; <a href="https://carto.com/attributions">CARTO</a>'
                 ></TileLayer>
-                <Marker position={[lat,lon]} >
+                <Marker position={[lat,lon]} icon={defaultIcon}>
                     <Popup>
                         <strong>{city}</strong> <br/> Lokacija grada
                     </Popup>
