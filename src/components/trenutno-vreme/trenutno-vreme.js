@@ -1,36 +1,36 @@
 import "./trenutno-vreme.css"
 
-const TrenutnoVreme= () => {
+const TrenutnoVreme= ({data}) => {
     return (
         <div className="vreme">
             <div className="top">
                 <div>
-                    <p className="grad">Belgrade</p>
-                    <p className="vreme-opis">Sunny</p>
+                    <p className="grad">{data.city}</p>
+                    <p className="vreme-opis">{data.weather[0].description}</p>
                 </div>
-                <img alt="vreme" className="vreme-icon" src="icons/01d.png"/>
+                <img alt="vreme" className="vreme-icon" src={`icons/${data.weather[0].icon}.png`}/>
             </div>
             <div className="donji">
-                <p className="temperatura">18°C</p>
+                <p className="temperatura">{Math.round(data.main.temp)}°C</p>
                 <div className="detalji">
                    <div className="parametri-red">
-                        <span className="parametri">Detalji</span>
+                        <span className="parametri">Opis</span>
                     </div>
                     <div className="parametri-red">
                         <span className="parametri">Osecaj</span>
-                        <span className="parametri-vrednost">22 °C</span>
+                        <span className="parametri-vrednost">{Math.round(data.main.feels_like)}°C</span>
                     </div>
                     <div className="parametri-red">
                         <span className="parametri">Vetar</span>
-                        <span className="parametri-vrednost">2 m/s</span>
+                        <span className="parametri-vrednost">{data.wind.speed} m/s</span>
                     </div>
                     <div className="parametri-red">
                         <span className="parametri">Vlaznost</span>
-                        <span className="parametri-vrednost">15%</span>
+                        <span className="parametri-vrednost">{data.main.humidity}%</span>
                     </div>
                     <div className="parametri-red">
                         <span className="parametri">Pritisak</span>
-                        <span className="parametri-vrednost">15 hPa</span>
+                        <span className="parametri-vrednost">{data.main.pressure} hPa</span>
                     </div>
                 </div> 
             </div>
