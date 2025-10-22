@@ -4,6 +4,7 @@ import './App.css';
 import Search from './components/Search/search';
 import TrenutnoVreme from './components/trenutno-vreme/trenutno-vreme';
 import Prognoza from './components/prognoza/prognoza.js';
+import Mapa from './components/mapa/Mapa.js';
 
 function App() {
 
@@ -35,6 +36,13 @@ function App() {
     <div className="container">
       <Search onSearchChange={handleOnSearchChange}/>
       {trenutnoVreme && <TrenutnoVreme data={trenutnoVreme}/>}
+      {trenutnoVreme && (
+        <Mapa 
+          lat={trenutnoVreme.coord.lat}
+          lon={trenutnoVreme.coord.lon}
+          city={trenutnoVreme.city}
+          />
+        )}
       {prognoza && <Prognoza data={prognoza}/>}
     </div>
   );
